@@ -39,7 +39,6 @@ say "solution part 2:\n",
 			max (/\d+(?= green)/g),
 			max (/\d+(?= blue)/g),
 	}
-	map s/;/,/gr,
 	split /\n/, $input;
 
 
