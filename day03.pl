@@ -5,7 +5,6 @@ use warnings;
 use feature 'say';
 
 use LWP::UserAgent;
-use Data::Dumper;
 
 my $ua = LWP::UserAgent->new;
 $ua->cookie_jar({});
@@ -14,29 +13,10 @@ my $res = $ua->get('https://adventofcode.com/2023/day/3/input');
 die "failed to request input: " . $res->decoded_content unless $res->is_success;
 my $input = $res->decoded_content;
 
-# my $input =
-# '467..114..
-# ...*......
-# ..35..633.
-# ......#...
-# 617*......
-# .....+.58.
-# ..592.....
-# ......755.
-# ...$.*....
-# .664.598..';
-
 sub sum { my $s = 0; foreach my $n (@_) { $s += $n } $s }
 sub product { my $p = 1; foreach my $n (@_) { $p *= $n } $p }
 sub min { (sort { $a <=> $b } @_)[0] }
 sub max { (sort { $a <=> $b } @_)[-1] }
-
-# my %limits = (
-# 	red => 12,
-# 	green => 13,
-# 	blue => 14,
-# );
-
 
 sub tensor_data_2d ($) { return [ map [ split '' ], split /\n/, $_[0] ] }
 sub tensor_data_3d ($) { return [ map [ map [ $_ ], split '' ], split /\n/, $_[0] ] }
@@ -191,7 +171,6 @@ my @bounding_boxes =
 	tensor_data_3d $input;
 
 say "solution part 2:\n",
-	# Dumper
 	sum
 	map { product map $_->[4], @{$_->[1]} }
 	grep @{$_->[1]} == 2,
