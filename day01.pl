@@ -13,6 +13,20 @@ my $res = $ua->get('https://adventofcode.com/2023/day/1/input');
 die "failed to request input: " . $res->decoded_content unless $res->is_success;
 my $input = $res->decoded_content;
 
+# my $input =
+# '1abc2
+# pqr3stu8vwx
+# a1b2c3d4e5f
+# treb7uchet';
+# my $input =
+# 'two1nine
+# eightwothree
+# abcone2threexyz
+# xtwone3four
+# 4nineeightseven2
+# zoneight234
+# 7pqrstsixteen';
+
 sub sum { my $s = 0; foreach (@_) { $s += $_ } $s }
 
 say "solution part 1: ",

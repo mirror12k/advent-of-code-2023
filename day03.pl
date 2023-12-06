@@ -13,6 +13,18 @@ my $res = $ua->get('https://adventofcode.com/2023/day/3/input');
 die "failed to request input: " . $res->decoded_content unless $res->is_success;
 my $input = $res->decoded_content;
 
+# my $input =
+# '467..114..
+# ...*......
+# ..35..633.
+# ......#...
+# 617*......
+# .....+.58.
+# ..592.....
+# ......755.
+# ...$.*....
+# .664.598..';
+
 sub sum { my $s = 0; foreach my $n (@_) { $s += $n } $s }
 sub product { my $p = 1; foreach my $n (@_) { $p *= $n } $p }
 sub min { (sort { $a <=> $b } @_)[0] }
